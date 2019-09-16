@@ -1,5 +1,5 @@
  ## Django Polls Application
- This application is used for 
+ This application is used for tracking votes.
 
  ## Requirements
 
@@ -10,4 +10,5 @@
 
  ## Running
  To run the server use the command "python3 manage.py runserver" in the terminal.
- Then enter "http://127.0.0.1:8000/admin/" to run the webserver.
+ Then enter "http://127.0.0.1:8000/admin/" to run the server as an admin.
+ Otherwise enter "http://127.0.0.1:8000/admin/" to run the as a user.
