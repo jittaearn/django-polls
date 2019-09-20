@@ -9,6 +9,15 @@ from .models import Question
 
 class QuestionModelTests(TestCase):
 
+    def test_was_published_recently_with_future_question(self):
+        """
+        was_published_recently() returns False for questions whose pub_date
+        is in the future.
+        """
+        time = timezone.now() + datetime.timedelta(days=30)
+        future_question = Question(pub_date=time)
+        self.assertIs(future_question.was_published_recently(), False)
+
     def test_was_published_recently_with_old_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
@@ -26,17 +35,6 @@ class QuestionModelTests(TestCase):
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
-
-    def test_was_published_recently_with_future_question(self):
-        """
-        was_published_recently() returns False for questions whose pub_date
-        is in the future.
-        """
-        time = timezone.now() + datetime.timedelta(days=30)
-        future_question = Question(pub_date=time)
-        self.assertIs(future_question.was_published_recently(), False)
-    template_name = 'polls/results.html'
-
 
 def create_question(question_text, days):
     """
@@ -105,7 +103,6 @@ class QuestionIndexViewTests(TestCase):
             ['<Question: Past question 2.>', '<Question: Past question 1.>']
         )
 
- 
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         """
