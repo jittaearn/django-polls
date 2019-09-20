@@ -37,6 +37,11 @@
  Make sure you are in the right directory.
     
     cd django-polls
+
+ Then activate the venv environment using the following command.
+ 
+    source venv/bin/activate
+
  ### Step 2:
  To run the server type the following command in the terminal.
 
