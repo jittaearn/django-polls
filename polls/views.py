@@ -6,6 +6,9 @@ from django.utils import timezone
 
 from .models import Choice, Question
 
+def index(request):
+    #redirect user to the polls index
+    return HttpResponseRedirect(reverse("polls:index"))
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
