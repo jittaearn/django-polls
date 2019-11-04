@@ -3,6 +3,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -23,3 +24,18 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class Product(models.Model):
+    upccode = models.CharField('UPC code',max_length=14)
+    description = models.CharField('Description', max_length=60)
+    price = models.DecimalField("Unit Price", 
+            max_digits=9, decimal_places=2)
+    quantity = models.IntegerField("Quantity", validators=[MinValueValidator(0)])
+
+    def quantity_in_stock(self):
+        """Compute and return number of units in stock"""
+        return self.quantity
+
+    def __str__(self):
+        return (f"UPC CODE: {self.upccode} Product Name: {self.description} Quantity: {self.quantity}  Price: {self.price}")
+     

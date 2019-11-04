@@ -1,0 +1,35 @@
+<h1> Product Table </h1>
+
+<table>
+    <tr>
+            <th> 
+                <h3>UPC CODE</h3>
+            </th>
+            <th>
+                <h3>Description</h3>
+            </th>
+            <th>
+                <h3>Price</h3>
+            </th>
+            <th>
+                <h3>Quantity</h3>
+            </th>
+        </tr>
+    {% for p in product %}
+    <tr> 
+        <th> 
+            {{p.upccode}}
+        </th>
+        <th>
+            {{p.description}}
+        </th>
+        <th>
+            {{p.price}}
+        </th>
+        <th>
+            {{p.quantity}}
+        </th>
+
+    </tr>
+    {% endfor %}
+</table>
